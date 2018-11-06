@@ -1,0 +1,29 @@
+import cv2 as cv
+import numpy as np
+
+#900X600
+src_0=[]
+src_1=[]
+src_2=[]
+src=cv.imread('w3.jpg')
+row,col,channel=src.shape
+for x in range(row):
+    for y in range(col):
+        src_0.append([x,y,src[x][y][0]])
+        src_1.append([x,y,src[x][y][1]])
+        src_2.append([x,y,src[x][y][2]])
+
+src_0.sort(key=lambda src_0:src_0[0])#key后面代码的含义是按照B0[2]的大小对B0进行排序
+src_1.sort(key=lambda src_1:src_1[1])
+src_2.sort(key=lambda src_2:src_2[2])
+
+L=len(src_0)
+print(L)
+src_0_sor=[]
+src_1_sor=[]
+src_2_sor=[]
+for x in range(L-10,L):
+    src_0_sor.append(src_0[x])
+    src_1_sor.append(src_1[x])
+    src_2_sor.append(src_2[x])
+print(src_0_sor)
